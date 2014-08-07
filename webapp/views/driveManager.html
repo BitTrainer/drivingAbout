@@ -1,0 +1,11 @@
+<div data-ng-init="init()">
+
+  <div ng-show="isCheckingDriveAuth">Checking access to Google drive ... </div>
+  <div ng-show="isDriveAuthFailure">
+    <h3 >Could not authorise with Google Drive</h3>
+    <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{{driveAuthErrorMessage}}
+  </div>
+  <div data-ng-show="isDriveAuthorised">
+    Google Drive Authenticated.
+  </div>
+</div>

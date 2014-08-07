@@ -17,15 +17,17 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .constant('DRIVE_CLIENT_ID', '775721955671-io9c7iev7hn8mtr2i9qdnpegj39prko0.apps.googleusercontent.com')
+  .constant('DRIVE_SCOPES','https://www.googleapis.com/auth/drive')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/driveManager',{
+        templateUrl: 'views/driveManager.html',
+        controller: 'DrivemanagerCtrl'
       })
       .otherwise({
         redirectTo: '/'
