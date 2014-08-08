@@ -18,7 +18,12 @@ angular
     'ngTouch'
   ])
   .constant('DRIVE_CLIENT_ID', '775721955671-io9c7iev7hn8mtr2i9qdnpegj39prko0.apps.googleusercontent.com')
-  .constant('DRIVE_SCOPES','https://www.googleapis.com/auth/drive')
+  .constant('DRIVE_SCOPES',['https://www.googleapis.com/auth/drive',
+                            'https://www.googleapis.com/auth/drive.file',
+                            'https://www.googleapis.com/auth/drive.readonly',
+                            'https://www.googleapis.com/auth/drive.metadata.readonly',
+                            'https://www.googleapis.com/auth/drive.appdata',
+                            'https://www.googleapis.com/auth/drive.apps.readonly'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -6,6 +6,11 @@
     <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>{{driveAuthErrorMessage}}
   </div>
   <div data-ng-show="isDriveAuthorised">
-    Google Drive Authenticated.
+    <tt ng-hide="invoices">Loading invoices ...</tt>
+    <ul ng-show="invoices">
+      <li data-ng-repeat="invoice in invoices">{{invoice.title}}</li>
+
+    </ul>
   </div>
+
 </div>

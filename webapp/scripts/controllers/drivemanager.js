@@ -13,6 +13,7 @@ angular.module('drivingAboutApp')
     scope.driveAuthErrorMessage = null;
     scope.isCheckingDriveAuth = true;
     scope.isDriveAuthorised = false;
+    scope.invoices = null;
 
     scope.init = function() {
        if(!GoogleAPI) {
@@ -40,7 +41,7 @@ angular.module('drivingAboutApp')
 
       if(result && !result.error){
         scope.isDriveAuthorised = true;
-
+        listInvoices();
       }else {
         GoogleAPI.auth.authorize(
              {'client_id': driveClientId, 'scope': driveScopes, 'immediate': false},
@@ -50,4 +51,18 @@ angular.module('drivingAboutApp')
       scope.$apply();
 
     }
+
+  function listInvoices() {
+    var request = GoogleAPI.client.request(
+      {
+        'path':'drive/v2/files',
+        'params':{'q': '"0Bxof9R4288uzbTNtcGV5bWJIRWM" in parents'}
+      }
+    );
+    var result = request.execute(function(result){
+        scope.invoices = result.items || [{title:'No results'}];
+        scope.$apply();
+    });
+
+  }
   }]);
